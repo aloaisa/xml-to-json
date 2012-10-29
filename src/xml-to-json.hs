@@ -8,7 +8,7 @@ import Text.XML.HXT.Core ((>>>), (&&&), readDocument, getChildren, getText, isEl
                           XmlTree, XNode(..), deep, getName, localPart, hasName, 
                           ArrowXml, runLA, getAttrl, runX, withValidate, no, yes)
 import Text.XML.HXT.Expat
-import Text.XML.HXT.Curl -- use libcurl for HTTP access
+--import Text.XML.HXT.Curl -- use libcurl for HTTP access
                          -- only necessary when reading http://...
 import qualified Data.Aeson as Aeson
 import qualified Data.HashMap.Strict as M
@@ -85,7 +85,7 @@ main = do
        forM_ inputFiles $ \src -> do 
          rootElems <- runX ( readDocument [withValidate no
                                           ,withExpat True
-                                          ,withCurl []
+                                          --,withCurl []
                                           ] src
                              >>> nodesFilter )
          -- TODO: de-uglify and optimize the following
